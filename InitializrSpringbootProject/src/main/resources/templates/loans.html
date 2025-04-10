@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- 9.5.2.2.1: Definir la codificación -->
+    <meta charset="UTF-8">
+    <!-- 9.5.2.2.2: Título de la página de préstamos -->
+    <title>Mis Préstamos - Mi Biblioteca</title>
+</head>
+<body>
+    <!-- 9.5.2.2.3: Header con el menú de navegación para usuarios -->
+    <header>
+        <nav>
+            <ul>
+                <li><a th:href="@{/}">Inicio</a></li>
+                <li><a th:href="@{/user/loans}">Mis Préstamos</a></li>
+                <li><a th:href="@{/logout}">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- 9.5.2.2.4: Sección principal para mostrar los préstamos actuales -->
+    <main>
+        <h2>Mis Préstamos</h2>
+        <!-- 9.5.2.2.5: Tabla para listar cada préstamo -->
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Libro</th>
+                    <th>Fecha de Préstamo</th>
+                    <th>Fecha de Devolución</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 9.5.2.2.6: Iterar sobre el objeto 'loans' enviado desde el controlador -->
+                <tr th:each="loan : ${loans}">
+                    <td th:text="${loan.id}"></td>
+                    <td th:text="${loan.book.title}"></td>
+                    <td th:text="${loan.loanDate}"></td>
+                    <td th:text="${loan.returnDate}"></td>
+                    <td>
+                        <!-- 9.5.2.2.7: Enlace para gestionar la devolución del libro -->
+                        <a th:href="@{'/user/loans/return/' + ${loan.id}}">Devolver</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    
+    <!-- 9.5.2.2.8: Footer -->
+    <footer>
+        <p>&copy; 2025 Mi Biblioteca. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

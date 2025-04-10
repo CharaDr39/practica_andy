@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- 9.4.3.2.1: Definir la codificación -->
+    <meta charset="UTF-8">
+    <!-- 9.4.3.2.2: Título de la página del formulario -->
+    <title>Formulario Libro - Biblioteca</title>
+</head>
+<body>
+    <!-- 9.4.3.2.3: Header con menú de navegación -->
+    <header>
+        <nav>
+            <ul>
+                <li><a th:href="@{/}">Inicio</a></li>
+                <li><a th:href="@{/admin/books/}">Libros</a></li>
+                <li><a th:href="@{/logout}">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- 9.4.3.2.4: Sección principal para el formulario -->
+    <main>
+        <h2>Agregar o Editar Libro</h2>
+        <!-- 9.4.3.2.5: Formulario para guardar la información de un libro -->
+        <!-- Se usa th:object para vincular los campos con el objeto 'book' -->
+        <form th:action="@{/admin/books/save}" th:object="${book}" method="post">
+            <!-- 9.4.3.2.6: Campo para el Título del libro -->
+            <div>
+                <label for="title">Título:</label>
+                <input type="text" id="title" th:field="*{title}" placeholder="Ingrese el título del libro" required>
+            </div>
+            <!-- 9.4.3.2.7: Campo para el Autor del libro -->
+            <div>
+                <label for="author">Autor:</label>
+                <input type="text" id="author" th:field="*{author}" placeholder="Ingrese el autor del libro" required>
+            </div>
+            <!-- 9.4.3.2.8: Campo para la Categoría del libro -->
+            <!-- Dependiendo de la implementación, este campo se puede cambiar por un <select> si se entrega la lista de categorías -->
+            <div>
+                <label for="category">Categoría:</label>
+                <input type="text" id="category" th:field="*{category.name}" placeholder="Ingrese la categoría" required>
+            </div>
+            <!-- 9.4.3.2.9: Botón para enviar el formulario -->
+            <div>
+                <button type="submit">Guardar Libro</button>
+            </div>
+        </form>
+    </main>
+    
+    <!-- 9.4.3.2.10: Footer -->
+    <footer>
+        <p>&copy; 2025 Mi Biblioteca. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

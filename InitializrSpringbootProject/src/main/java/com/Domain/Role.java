@@ -1,14 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 package com.Domain;
 
-/**
- *
- * @author chara
- */
+import jakarta.persistence.*;
+import lombok.Data;
+import java.util.List;
+
+@Data
+@Entity
+@Table(name = "roles")
 public class Role {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;  // "ROLE_ADMIN", "ROLE_USER", etc.
+
+    @ManyToMany(mappedBy = "roles")
+    private List<User> users;
 }

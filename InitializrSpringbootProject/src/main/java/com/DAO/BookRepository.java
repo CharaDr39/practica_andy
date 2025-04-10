@@ -1,14 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 package com.DAO;
 
-/**
- *
- * @author chara
- */
-public class BookRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import com.Domain.Book;
 
+public interface BookRepository extends JpaRepository<Book, Long> {
 }

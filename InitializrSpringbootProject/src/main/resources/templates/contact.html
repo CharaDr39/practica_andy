@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Definir la codificación de caracteres -->
+    <meta charset="UTF-8">
+    <!-- Título de la página de contacto -->
+    <title>Biblioteca - Contacto</title>
+</head>
+<body>
+    <!-- Header con la barra de navegación -->
+    <header>
+        <nav>
+            <ul>
+                <li><a th:href="@{/}">Inicio</a></li>
+                <li><a th:href="@{/login}">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Sección principal para el formulario de contacto -->
+    <main>
+        <h2>Contacto</h2>
+        <p>Para consultas, completa el siguiente formulario:</p>
+        <!-- El formulario usa method "post" y enviará los datos a la URL /contact -->
+        <form th:action="@{/contact}" method="post">
+            <!-- Campo para el nombre -->
+            <div>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+            </div>
+            <!-- Campo para el correo electrónico -->
+            <div>
+                <label for="correo">Correo:</label>
+                <input type="email" id="correo" name="correo" placeholder="tuemail@ejemplo.com" required>
+            </div>
+            <!-- Área de texto para el mensaje -->
+            <div>
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí" required></textarea>
+            </div>
+            <!-- Botón para enviar el formulario -->
+            <div>
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
+        <!-- Espacio para mostrar mensaje de éxito luego de enviar el formulario -->
+        <div th:if="${successMessage}">
+            <p th:text="${successMessage}"></p>
+        </div>
+    </main>
+    
+    <!-- Footer común en todas las páginas -->
+    <footer>
+        <p>&copy; 2025 Mi Biblioteca. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

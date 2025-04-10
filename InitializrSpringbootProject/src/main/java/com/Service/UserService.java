@@ -1,14 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 package com.Service;
 
-/**
- *
- * @author chara
- */
-public class UserService {
+import java.util.List;
+import com.Domain.User;
 
+public interface UserService {
+
+    // 1. Método para obtener la lista completa de usuarios
+    List<User> listAllUsers();
+    
+    // 2. Método para obtener un usuario por su ID
+    User getUserById(Long id);
+    
+    // 3. Método para obtener un usuario por su username (para login o validación)
+    User getUserByUsername(String username);
+    
+    // 4. Método para guardar o actualizar un usuario
+    User saveUser(User user);
+    
+    // 5. Método para eliminar un usuario por su ID
+    void deleteUser(Long id);
 }

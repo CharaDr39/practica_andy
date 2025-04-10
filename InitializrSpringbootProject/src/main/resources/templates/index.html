@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- 9.1.2.1: Definir la codificación de caracteres -->
+    <meta charset="UTF-8">
+    <!-- 9.1.2.2: Título de la página -->
+    <title>Biblioteca - Inicio</title>
+    <!-- 9.1.2.3: En este lugar puedes enlazar archivos CSS o scripts si los requieres -->
+</head>
+<body>
+    <!-- 9.1.2.4: Inicio del Header común en todas las vistas -->
+    <header>
+        <!-- 9.1.2.5: Menú de navegación, que se mostrará en todas las páginas -->
+        <nav>
+            <ul>
+                <li><a th:href="@{/}">Inicio</a></li>
+                <li><a th:href="@{/contact}">Contacto</a></li>
+                <li><a th:href="@{/login}">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- 9.1.2.6: Sección principal de la página -->
+    <main>
+        <!-- 9.1.2.7: Título principal de la página de inicio -->
+        <h1>Bienvenido a la Biblioteca</h1>
+        <!-- 9.1.2.8: Párrafo de introducción o información básica -->
+        <p>Aquí encontrarás información sobre la biblioteca, sus servicios y novedades.</p>
+        <!-- 9.1.2.9: Incluir un iframe para mostrar un video (por ejemplo, de presentación o historia) -->
+        <iframe width="560" height="315" 
+                src="https://www.youtube.com/embed/TU_VIDEO_ID"
+                title="Video de presentación de la Biblioteca" 
+                frameborder="0" 
+                allowfullscreen>
+        </iframe>
+    </main>
+    
+    <!-- 9.1.2.10: Footer común en todas las vistas -->
+    <footer>
+        <p>&copy; 2025 Mi Biblioteca. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

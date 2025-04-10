@@ -1,14 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 package com.Domain;
 
-/**
- *
- * @author chara
- */
-public class Book {
+import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
+@Entity
+@Table(name = "books")
+public class Book {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String title;
+    
+    private String author;
+    
+    // Relación con Category (muchos libros pueden pertenecer a una misma categoría)
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    // Otros campos que necesites (ej: estado, si está prestado, etc.)
 }

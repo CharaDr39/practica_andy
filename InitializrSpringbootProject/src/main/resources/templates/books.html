@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- 9.4.2.2.1: Definir la codificación -->
+    <meta charset="UTF-8">
+    <!-- 9.4.2.2.2: Título de la página para administrar libros -->
+    <title>Administrar Libros - Biblioteca</title>
+</head>
+<body>
+    <!-- 9.4.2.2.3: Header con el menú de navegación exclusivo para administración -->
+    <header>
+        <nav>
+            <ul>
+                <li><a th:href="@{/}">Inicio</a></li>
+                <li><a th:href="@{/admin/books/}">Libros</a></li>
+                <li><a th:href="@{/admin/categories/}">Categorías</a></li>
+                <li><a th:href="@{/logout}">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- 9.4.2.2.4: Sección principal para listar los libros -->
+    <main>
+        <h2>Lista de Libros</h2>
+        <!-- 9.4.2.2.5: Tabla para mostrar la información de cada libro -->
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Categoría</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 9.4.2.2.6: Iterar sobre la lista de libros pasada desde el controlador -->
+                <tr th:each="book : ${books}">
+                    <td th:text="${book.id}"></td>
+                    <td th:text="${book.title}"></td>
+                    <td th:text="${book.author}"></td>
+                    <td th:text="${book.category.name}"></td>
+                    <td>
+                        <!-- 9.4.2.2.7: Enlace para eliminar el libro -->
+                        <a th:href="@{'/admin/books/delete/' + ${book.id}}">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- 9.4.2.2.8: Enlace para acceder al formulario y agregar un nuevo libro -->
+        <div>
+            <a th:href="@{/admin/books/new}">Agregar Nuevo Libro</a>
+        </div>
+    </main>
+    
+    <!-- 9.4.2.2.9: Footer para la sección de administración -->
+    <footer>
+        <p>&copy; 2025 Mi Biblioteca. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
